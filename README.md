@@ -2,10 +2,10 @@
 
 中文学术写作工具集。覆盖论文写作、图表生成、参考文献处理、审稿回复 4 件事。
 
-每件事都做了**两份**：一份是 Claude Code skill（装好后用 `/` 命令触发），一份是独立 prompt 文件（复制粘贴到 ChatGPT / 豆包 / DeepSeek 等都能用）。
+每件事都做了**两份**：一份是 **agent skill**（装到 Claude Code / ChatGPT Codex 等支持 SKILL.md 的工具，用 `/` 命令触发），一份是独立 **prompt 文件**（复制粘贴到 ChatGPT / 豆包 / DeepSeek / Kimi / 任何对话式 AI 都能用）。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Skills](https://img.shields.io/badge/Claude_Code_Skills-4-blue.svg)]()
+[![Skills](https://img.shields.io/badge/Agent_Skills-4-blue.svg)]()
 [![Prompts](https://img.shields.io/badge/Standalone_Prompts-38-orange.svg)]()
 [![中文](https://img.shields.io/badge/Language-中文-red.svg)]()
 
@@ -16,7 +16,7 @@
 ```
 paper-toolkits/
 │
-├── skills/                    给 Claude Code 用
+├── skills/                    给 Claude Code / ChatGPT Codex 等 agent 用
 │   ├── academic-writing/      论文写作（草稿/润色/去AI/检查/分析/审稿/翻译）
 │   ├── academic-figure/       图表（推荐/绘图/架构图/流程图/图形摘要/caption）
 │   ├── academic-citation/     参考文献（格式/检查/BibTeX/转换/DOI/正文核对）
@@ -36,9 +36,15 @@ paper-toolkits/
 
 ---
 
-## 🔧 用法一：装到 Claude Code
+## 🔧 用法一：装成 agent skill
 
-需要先装 [Claude Code](https://docs.anthropic.com/en/docs/claude-code)。
+支持任何能加载 `SKILL.md` 的 agent，包括：
+
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) — 路径 `~/.claude/skills/`
+- [ChatGPT Codex](https://github.com/openai/codex) — 路径 `~/.codex/skills/`
+- 其他遵循 SKILL.md 规范的 agent
+
+### 装到 Claude Code
 
 **Windows PowerShell**：
 
@@ -55,7 +61,26 @@ mkdir -p ~/.claude/skills
 cp -R paper-toolkits/skills/academic-* ~/.claude/skills/
 ```
 
-重启 Claude Code。在对话里输入 `/`，会看到 4 个新命令：
+### 装到 ChatGPT Codex
+
+**Windows PowerShell**：
+
+```powershell
+git clone https://github.com/XYD-GIS/paper-toolkits.git
+Copy-Item "paper-toolkits/skills/academic-*" "$env:USERPROFILE\.codex\skills\" -Recurse -Force
+```
+
+**macOS / Linux**：
+
+```bash
+git clone https://github.com/XYD-GIS/paper-toolkits.git
+mkdir -p ~/.codex/skills
+cp -R paper-toolkits/skills/academic-* ~/.codex/skills/
+```
+
+### 验证
+
+重启 agent。在对话里输入 `/`，会看到 4 个新命令：
 
 ```
 /academic-writing
@@ -83,7 +108,7 @@ cp -R paper-toolkits/skills/academic-* ~/.claude/skills/
 
 ## 📋 用法二：复制 prompt 到任何 AI
 
-如果不想装 Claude Code，直接打开 `prompts/` 里对应主题的文件，比如想去 AI 味就打开 [prompts/writing/03-deai.md](prompts/writing/03-deai.md)。
+如果不想装任何 agent 工具，直接打开 `prompts/` 里对应主题的文件，比如想去 AI 味就打开 [prompts/writing/03-deai.md](prompts/writing/03-deai.md)。
 
 每个文件都长这样：
 
@@ -130,7 +155,7 @@ cp -R paper-toolkits/skills/academic-* ~/.claude/skills/
 
 **所有占位符用 `{}` 标记**。比如 `{阶段数量}`、`{论文标题}`，眼睛一扫就知道哪里要填，不用读完整段才发现。
 
-**Claude Code skill 拆成入口 + references 子文件**。SKILL.md 只 100 行左右，Claude 按需读 references。避免一上来就吃几千 token 的上下文。
+**Skill 拆成入口 + references 子文件**。SKILL.md 只 100 行左右，agent 按需读 references。避免一上来就吃几千 token 的上下文。
 
 **writing 主题内置 11 条具体写作准则**。比如禁用"明显差异 / 重要意义"等模糊词、"因此"前后必须真因果、方法命名必须统一、改进要落到具体指标。每个 prompt 都嵌了这 11 条，让 AI 输出自动按准则自查。
 
@@ -150,7 +175,7 @@ cp -R paper-toolkits/skills/academic-* ~/.claude/skills/
 
 **间接参考**：
 
-- [Anthropic 官方 skills](https://github.com/anthropics/skills) — Claude Code skill 的写法规范
+- [Anthropic 官方 skills](https://github.com/anthropics/skills) — SKILL.md 的写法规范
 - [zechenzhangAGI/AI-research-SKILLs](https://github.com/zechenzhangAGI/AI-research-SKILLs) — ML 论文写作 skill
 - [numman-ali/openskills](https://github.com/numman-ali/openskills) — OpenSkills 装载机制
 - [ChenLiu-1996/figures4papers](https://github.com/ChenLiu-1996/figures4papers) — matplotlib 论文级图表脚本

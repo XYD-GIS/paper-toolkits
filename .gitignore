@@ -1,0 +1,74 @@
+# ============================================================
+# academic-skills .gitignore
+# ============================================================
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+.cursor/
+.zed/
+
+# Claude Code 本地配置（不要 commit 到公共仓库）
+.claude/
+CLAUDE.md
+.claude.json
+
+# Python（如果将来加示例脚本）
+__pycache__/
+*.py[cod]
+*$py.class
+.python-version
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+venv/
+.venv/
+env/
+
+# Node / NPM（如果将来加测试或工具）
+node_modules/
+package-lock.json
+yarn.lock
+.npm/
+
+# 临时文件 / 草稿
+*.tmp
+*.log
+*.draft
+*.local.md
+*.scratch.md
+drafts/
+
+# 输出文件（如果某些 skill 输出文件）
+output/
+*.svg.tmp
+*.png.tmp
+
+# 个人化数据 / 实验数据（不应进公共仓库）
+private/
+*.private.md
+secrets/
+.env
+.env.local
+*.key
+*.pem
+
+# macOS / Windows 缩略图
+._*
+.Trashes
+$RECYCLE.BIN/
+
+# 用户领域特化 skill（保留在本地仓库主分支以外）
+# 如要分享请新建分支
+write.md
+feiyi.md

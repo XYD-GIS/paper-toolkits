@@ -65,7 +65,7 @@
 
 ## 六、术语标准化
 - 英文缩写首次出现写"全称（缩写）"：Principal Component Analysis (PCA)
-- 方法名首次出现写"全称, 缩写"：Standard Deviational Ellipse (SDE)
+- 方法名首次出现写"全称, 缩写"：Convolutional Neural Network (CNN)
 - 学者姓名采用 Pinyin，姓氏首字母大写："Wang et al. (2020)"
 - 期刊名使用斜体（Markdown 中用 *italic*）
 
